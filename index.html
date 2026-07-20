@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no" />
-  <meta name="theme-color" content="#F4F2EC" />
+  <meta name="theme-color" content="#FBF3D9" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="剧本查阅" />
@@ -318,6 +318,126 @@
       .navigator-drawer{width:min(90vw,380px);border-radius:0 20px 20px 0}
     }
 
+
+    /* ===== v1.4 暖黄手账视觉：温暖、轻盈、严格对齐 ===== */
+    :root{
+      --bg:#FBF3D9;--panel:#FFF8E8;--card:#FFFDF7;--hover:#F8E8B8;--accent:#F2B90B;
+      --primary:#29465E;--text:#302D28;--secondary:#766E62;--muted:#A69C8C;
+      --border:rgba(119,91,40,.13);--border-strong:rgba(119,91,40,.21);
+      --shadow:0 10px 28px rgba(111,82,27,.075);--shadow-float:0 20px 54px rgba(87,65,27,.15);
+    }
+    :root[data-theme="dark"]{
+      --bg:#181711;--panel:#211F17;--card:#29261D;--hover:#3A321E;--accent:#E8B63D;
+      --primary:#C4D7E6;--text:#F5F0E5;--secondary:#D0C5B4;--muted:#9D9485;
+      --border:rgba(244,211,143,.10);--border-strong:rgba(244,211,143,.18);
+      --shadow:0 14px 36px rgba(0,0,0,.24);--shadow-float:0 22px 60px rgba(0,0,0,.4);
+    }
+    html,body{background-color:var(--bg)}
+    body{
+      background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 31px,rgba(151,117,51,.018) 31px,rgba(151,117,51,.018) 32px);
+    }
+    .app{background:linear-gradient(155deg,#FFF8E7 0,var(--bg) 52%,#FAF0D2 100%)}
+    :root[data-theme="dark"] .app{background:linear-gradient(155deg,#211E15 0,var(--bg) 58%,#17150F 100%)}
+    .header{background:color-mix(in srgb,var(--panel) 93%,transparent);box-shadow:0 1px 0 var(--border),0 5px 20px rgba(122,91,33,.035)}
+    .project-button{color:var(--text)}
+    .icon-button{color:#707B83}
+    .icon-button:hover,.icon-button:active{color:var(--primary);background:color-mix(in srgb,var(--card) 92%,transparent);box-shadow:0 5px 16px rgba(104,76,26,.07)}
+
+    .bottom-nav{
+      background:color-mix(in srgb,var(--panel) 95%,transparent);border-color:var(--border);
+      box-shadow:0 12px 28px rgba(104,77,29,.12);
+    }
+    .nav-btn{color:#999A94}
+    .nav-btn.active{color:var(--primary);background:linear-gradient(180deg,rgba(255,255,255,.45),rgba(248,232,184,.42))}
+    .nav-btn.active::after{background:var(--accent)}
+    .side-nav .nav-btn.active{background:linear-gradient(90deg,color-mix(in srgb,var(--accent) 14%,var(--card)),var(--card));box-shadow:0 6px 18px rgba(105,77,25,.06)}
+
+    .toolbar,.scene-filters,.mindmap-toolbar{
+      background:color-mix(in srgb,var(--card) 94%,transparent);border-color:var(--border);box-shadow:0 6px 18px rgba(110,80,28,.045);
+    }
+    input,select{background:color-mix(in srgb,var(--panel) 72%,var(--card));border-color:rgba(119,91,40,.08)}
+    input:focus,select:focus{background:var(--card);border-color:color-mix(in srgb,var(--accent) 70%,#B98618);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 16%,transparent)}
+    .primary-btn{background:var(--primary);border-color:var(--primary);color:#FFFDF7;box-shadow:0 7px 18px rgba(41,70,94,.18)}
+    .small-btn.active{background:color-mix(in srgb,var(--accent) 15%,var(--card));border-color:color-mix(in srgb,var(--accent) 34%,var(--border));color:var(--primary)}
+    .scope-label{background:linear-gradient(180deg,#FFF9E8,#F8ECC7);border-color:rgba(191,145,42,.18);color:var(--primary)}
+
+    /* 所有筛选控件统一为同一基线、字号和高度 */
+    .filter-strip{align-items:center;gap:8px;min-height:58px}
+    .filter-strip .filter-control{
+      box-sizing:border-box;height:42px;min-height:42px;margin:0;padding-top:0;padding-bottom:0;
+      display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;
+      font-size:13px;font-weight:540;line-height:1;color:var(--secondary);vertical-align:middle;
+    }
+    .filter-strip .filter-scope{padding:0 14px;font-weight:720;color:var(--primary);white-space:nowrap}
+    .filter-strip select.filter-control{
+      -webkit-appearance:none;appearance:none;line-height:normal;padding-left:14px;padding-right:34px;
+      background-image:linear-gradient(45deg,transparent 50%,var(--secondary) 50%),linear-gradient(135deg,var(--secondary) 50%,transparent 50%);
+      background-position:calc(100% - 16px) 18px,calc(100% - 11px) 18px;background-size:5px 5px,5px 5px;background-repeat:no-repeat;
+    }
+    .filter-strip input.filter-control{justify-content:flex-start;padding-left:14px;padding-right:14px;line-height:normal;font-size:13px;flex:0 0 150px;width:150px;min-width:150px}
+    .filter-strip button.filter-control{padding-left:14px;padding-right:14px}
+    .filter-strip .filter-search{width:150px;min-width:150px;flex-basis:150px}
+    .filter-strip .filter-count{height:42px;display:inline-flex;align-items:center;justify-content:center;min-width:42px;padding:0 4px;font-size:12px;line-height:1;white-space:nowrap}
+
+    .full-text-inner{background:linear-gradient(180deg,#FFFDF8,#FFFBEF);border-color:var(--border);box-shadow:0 9px 28px rgba(105,78,28,.065)}
+    :root[data-theme="dark"] .full-text-inner{background:var(--card)}
+    .full-doc-title,.full-episode-title{color:var(--primary);background:color-mix(in srgb,var(--card) 96%,transparent)}
+    .full-doc-title::before,.full-episode-title::before,.section-title::before{
+      content:"";display:inline-block;width:4px;height:16px;margin-right:8px;border-radius:999px;background:var(--accent);vertical-align:-2px;
+    }
+    .full-scene{padding-top:14px}
+    .full-scene-head{
+      display:block;max-width:100%;margin:0 0 12px;padding:8px 11px;border-radius:9px;
+      background:linear-gradient(90deg,color-mix(in srgb,var(--accent) 16%,var(--card)),color-mix(in srgb,var(--accent) 6%,var(--card)));
+      border-left:3px solid var(--accent);color:var(--primary);font-size:12px;font-weight:690;line-height:1.35;
+      white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+    }
+    .full-scene-head small{display:none!important}
+    .full-prose{letter-spacing:0;color:var(--text)}
+
+    .result-row,.dialogue-row,.scene-row{background:color-mix(in srgb,var(--card) 96%,transparent);box-shadow:0 3px 10px rgba(103,76,27,.035)}
+    .result-row:hover,.dialogue-row:hover,.scene-row:hover,.result-row.active{border-color:var(--border);box-shadow:0 7px 18px rgba(103,76,27,.07)}
+    .scene-place{color:var(--text)}
+    .material-item{background:linear-gradient(180deg,var(--card),#FFFBED);box-shadow:0 5px 15px rgba(104,77,28,.045)}
+    :root[data-theme="dark"] .material-item{background:var(--card)}
+    .material-item:hover,.material-item.active{border-color:color-mix(in srgb,var(--accent) 32%,var(--border));box-shadow:inset 3px 0 0 var(--accent),0 9px 22px rgba(104,77,28,.08)}
+    .tag{background:#FFF3CA;color:#8C6719;border-color:#F0D88C}
+    :root[data-theme="dark"] .tag{background:#463A20;color:#F3CB6A;border-color:#665426}
+
+    .mindmap-viewport{
+      background-color:#FFFDF6;
+      background-image:radial-gradient(circle at 1px 1px,rgba(147,111,46,.085) 1px,transparent 1.2px);
+      background-size:24px 24px;border-color:var(--border);box-shadow:0 10px 28px rgba(104,77,28,.065);
+    }
+    :root[data-theme="dark"] .mindmap-viewport{background-color:var(--card);background-image:radial-gradient(circle at 1px 1px,rgba(234,200,126,.08) 1px,transparent 1.2px)}
+    .tree-node-button{border-color:var(--border)!important;background:linear-gradient(180deg,#FFFDF8,#FFF9E9)!important;box-shadow:0 5px 15px rgba(104,77,28,.07)}
+    :root[data-theme="dark"] .tree-node-button{background:var(--card)!important}
+    .mindmap-hint{background:color-mix(in srgb,var(--panel) 92%,transparent);box-shadow:0 8px 22px rgba(104,77,28,.09)}
+
+    .navigator-drawer,.sheet{background:var(--panel)}
+    .nav-project-card{background:var(--card);box-shadow:0 4px 15px rgba(104,77,28,.045)}
+    .nav-tree-row.selected{background:linear-gradient(90deg,color-mix(in srgb,var(--accent) 14%,var(--card)),var(--card))}
+    .nav-children{background:color-mix(in srgb,var(--bg) 58%,var(--panel))}
+
+    /* 桌面与 iPad 横屏：去掉页面最底部额外空条 */
+    @media(min-width:720px){
+      .main{padding:0!important}
+      .full-text{padding-bottom:24px}
+      .toolbar,.scene-filters,.mindmap-toolbar{margin-bottom:8px}
+      .mindmap-viewport{margin-bottom:0}
+    }
+    @media(min-width:1024px){
+      .main{padding:0!important}
+      .toolbar,.scene-filters,.mindmap-toolbar{margin-left:12px;margin-right:12px}
+      .mindmap-viewport{margin-left:12px;margin-right:12px}
+    }
+    @media(max-width:719px){
+      .filter-strip{min-height:58px}
+      .filter-strip .filter-control{height:42px;min-height:42px;font-size:13px}
+      .filter-strip .filter-search{width:142px;min-width:142px;flex-basis:142px}
+      .full-scene-head{font-size:11.5px}
+    }
+
   </style>
 </head>
 <body>
@@ -344,7 +464,7 @@
 </div>
 <script>
 'use strict';
-const APP_VERSION='1.3.0';
+const APP_VERSION='1.4.0';
 const ICONS={
   reader:`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 3.5h9l4 4v13h-13z"/><path d="M14.5 3.5v4h4M8.5 11h7M8.5 14.5h7M8.5 18h4.5"/></svg>`,
   roles:`<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.2"/><path d="M5.5 20c.5-4 2.7-6 6.5-6s6 2 6.5 6"/></svg>`,
@@ -420,17 +540,17 @@ function renderNoData(){return `<div class="empty"><div><strong>还没有移动�
 function episodeOptions(selected='',allLabel='全部集数'){return `<option value="">${allLabel}</option>`+sortedEpisodes().map(ep=>`<option value="${esc(ep.id)}" ${selected===ep.id?'selected':''}>第${esc(ep.episodeNoDisplay??ep.episodeNo)}集</option>`).join('')}
 function renderScriptParagraph(para,highlight=''){const d=parseDialogue(para?.text);return d?`<p data-paragraph-id="${esc(para?.id||'')}"><span class="dialogue-name">${esc(d.display||d.character)}</span>：${d.emotion?`<span class="meta">（${esc(d.emotion)}）</span>`:''}${highlightHtml(d.content,highlight)}</p>`:`<p data-paragraph-id="${esc(para?.id||'')}"><span class="action-line">⊿${highlightHtml(norm(para?.text).replace(/^[△⊿]\s*/,''),highlight)}</span></p>`}
 function renderCommonDocument(full=true,highlight='',targetIndex=-1){const doc=currentProject()?.commonDoc;if(!doc)return`<div class="empty"><div>当前项目没有公共文档</div></div>`;const blocks=(doc.content||[]).map((block,index)=>`<p data-common-index="${index}" id="common-${index}">${highlightHtml(block.text,highlight)}</p>`).join('');if(full)return`<section class="full-common"><div class="full-doc-title">📋 ${esc(doc.title||'公共文档')}<span>${(doc.content||[]).length}段</span></div><div class="full-prose">${blocks}</div></section>`;return`<article class="reader"><div class="reader-head"><button class="icon-button mobile-back" data-action="close-reader">‹</button><div class="reader-title"><strong>${esc(doc.title||'公共文档')}</strong><span>${esc(currentProject()?.name||'')}</span></div></div><div class="reader-body"><div class="reader-inner">${blocks}</div></div>${state.search.results.length?`<div class="reader-footer"><button data-action="prev-search">上一处</button><span class="meta">${state.search.selectedIndex+1}/${state.search.results.length}</span><button data-action="next-search">下一处</button></div>`:''}</article>`}
-function renderFullText(){const p=currentProject();if(!p)return`<div class="empty"><div>暂无原文</div></div>`;if(state.navigation.kind==='common')return`<div class="full-text"><div class="full-text-inner">${renderCommonDocument(true)}</div></div>`;const common=state.navigation.kind==='project'&&p.commonDoc?renderCommonDocument(true):'';const episodes=activeEpisodes().map(ep=>{const scenes=(ep.scenes||[]).map(scene=>`<section class="full-scene" data-scene-key="${esc(scene.key)}"><div class="full-scene-head">第${esc(ep.episodeNoDisplay)}集 · 第${esc(scene.sceneNoDisplay)}场 · ${esc(sceneLocation(scene.sceneLabel))}<small>${esc(scene.timeTag||'—')} · ${esc(scene.inout||'—')}</small></div><div class="full-prose">${(scene.paragraphs||[]).map(para=>renderScriptParagraph(para)).join('')}</div></section>`).join('');return`<section class="full-episode"><div class="full-episode-title">第${esc(ep.episodeNoDisplay)}集<span>${esc(ep.versionName||'')} · ${(ep.scenes||[]).length}场</span></div>${scenes||`<div class="empty"><div>本集暂无原文</div></div>`}</section>`}).join('');return`<div class="full-text"><div class="full-text-inner">${common}${episodes||`<div class="empty"><div>当前范围暂无原文</div></div>`}</div></div>`}
+function renderFullText(){const p=currentProject();if(!p)return`<div class="empty"><div>暂无原文</div></div>`;if(state.navigation.kind==='common')return`<div class="full-text"><div class="full-text-inner">${renderCommonDocument(true)}</div></div>`;const common=state.navigation.kind==='project'&&p.commonDoc?renderCommonDocument(true):'';const episodes=activeEpisodes().map(ep=>{const scenes=(ep.scenes||[]).map(scene=>{const head=`第${esc(ep.episodeNoDisplay)}集第${esc(scene.sceneNoDisplay)}场 · ${esc(sceneLocation(scene.sceneLabel))} · ${esc(scene.timeTag||'—')} · ${esc(scene.inout||'—')}`;return`<section class="full-scene" data-scene-key="${esc(scene.key)}"><div class="full-scene-head" title="${head}">${head}</div><div class="full-prose">${(scene.paragraphs||[]).map(para=>renderScriptParagraph(para)).join('')}</div></section>`}).join('');return`<section class="full-episode"><div class="full-episode-title">第${esc(ep.episodeNoDisplay)}集<span>${esc(ep.versionName||'')} · ${(ep.scenes||[]).length}场</span></div>${scenes||`<div class="empty"><div>本集暂无原文</div></div>`}</section>`}).join('');return`<div class="full-text"><div class="full-text-inner">${common}${episodes||`<div class="empty"><div>当前范围暂无原文</div></div>`}</div></div>`}
 function renderSearchWorkspace(){const q=norm(state.search.query);if(!q)return renderFullText();state.search.results=buildSearchResults();const reader=state.search.reader;const rows=state.search.results.map((r,i)=>`<button class="result-row ${state.search.selectedIndex===i?'active':''}" data-search-index="${i}"><span class="result-pos">${esc(r.positionLabel||`${r.episodeNo}-${r.sceneNo}`)}</span><span class="one-line">${r.snippet}</span></button>`).join('');return`<div class="split ${reader?'search-reader-active':''}"><div class="pane search-list-pane"><div class="section-title"><span>搜索结果</span><span>${state.search.results.length}处</span></div><div id="searchResults" class="content-scroll">${rows||`<div class="empty"><div>没有匹配内容</div></div>`}</div></div><div class="pane search-reader-pane">${reader?renderReader(reader,'search'):`<div class="empty"><div>点选结果查看原文</div></div>`}</div></div>`}
 function renderSearch(){state.search.results=buildSearchResults();return`<section class="page"><div class="toolbar"><input id="searchInput" type="search" value="${esc(state.search.query)}" placeholder="在当前原文中搜索…" autocomplete="off" enterkeyhint="search"><span class="scope-label">${esc(selectedRangeLabel())}</span><span id="searchCount" class="meta">${state.search.query?`${state.search.results.length}处`:'原文'}</span></div><div id="searchWorkspace" class="search-workspace">${renderSearchWorkspace()}</div></section>`}
 function readerPayload(loc,extra={}){const found=findScene(loc.episodeId,loc.sceneKey,loc.versionId);return found?{...loc,...found,...extra}:null}
 function renderReader(payload,source){if(payload?.type==='common')return renderCommonDocument(false,payload.highlight||'',payload.blockIndex);const p=payload?.scene?payload:readerPayload(payload);if(!p)return`<div class="empty"><div>未找到对应原文</div></div>`;const q=payload.highlight||'';const paras=(p.scene.paragraphs||[]).map(para=>renderScriptParagraph(para,q)).join('');const footer=source==='search'&&state.search.results.length?`<div class="reader-footer"><button data-action="prev-search">上一处</button><span class="meta">${state.search.selectedIndex+1}/${state.search.results.length}</span><button data-action="next-search">下一处</button></div>`:'';return `<article class="reader"><div class="reader-head"><button class="icon-button mobile-back" data-action="close-reader">‹</button><div class="reader-title"><strong>第${esc(p.merged.episodeNoDisplay)}集 · 第${esc(p.scene.sceneNoDisplay)}场</strong><span>${esc(sceneLocation(p.scene.sceneLabel))}　${esc(p.scene.timeTag||'—')}　${esc(p.scene.inout||'—')}${p.version?.versionName?`　${esc(p.version.versionName)}`:''}</span></div></div><div class="reader-body"><div class="reader-inner">${paras}</div></div>${footer}</article>`}
 function renderRoles(){const all=roleData(),data=all.filter(r=>!state.roles.query||r.name.includes(state.roles.query));if(!state.roles.selectedName&&all.length&&window.innerWidth>=720)state.roles.selectedName=all[0].name;const selected=all.find(r=>r.name===state.roles.selectedName);const roleRows=all.map(r=>`<button class="role-row ${r.name===state.roles.selectedName?'active':''}" data-role="${esc(r.name)}" ${state.roles.query&&!r.name.includes(state.roles.query)?'hidden':''}><span class="role-name">${esc(r.name)}</span><span class="meta">${r.sceneCount}场 · ${r.lineCount}条</span></button>`).join('');const dialogueRows=(selected?.items||[]).map((d,i)=>`<button class="dialogue-row" data-dialogue-index="${i}"><span class="result-pos">${esc(d.episodeNo)}-${esc(d.sceneNo)}</span><span class="one-line"><div class="dialogue-source">${esc(sceneLocation(d.sceneLabel))}</div><div class="dialogue-text"><b>${esc(d.display||d.character)}：</b>${esc(d.content)}</div></span></button>`).join('');return`<section class="page"><div class="toolbar"><span class="scope-label">${esc(selectedRangeLabel())}</span><input id="roleSearch" type="search" value="${esc(state.roles.query)}" placeholder="搜索角色名……"><span id="roleCount" class="meta">${data.length}人</span></div><div class="role-layout ${state.roles.selectedName?'role-selected':''}"><div class="pane role-list-pane"><div class="role-list">${roleRows||`<div class="empty"><div>暂无角色台词</div></div>`}</div></div><div class="pane role-detail-pane"><div class="section-title"><button class="mobile-back" data-action="back-role">‹ 角色</button><span>${selected?`${esc(selected.name)} · ${selected.sceneCount}场 · ${selected.lineCount}条`:''}</span></div><div class="content-scroll">${dialogueRows||`<div class="empty"><div>请选择角色</div></div>`}</div></div></div></section>`}
 function filteredScenes(ignoreKeyword=false){const f=state.scenes;let rows=getScenes().filter(s=>(!f.timeTag||s.timeTag===f.timeTag)&&(!f.inout||s.inout===f.inout)&&(ignoreKeyword||!f.keyword||sceneLocation(s.sceneLabel).includes(f.keyword)));return rows.sort((a,b)=>(Number(a.episodeNo)||0)-(Number(b.episodeNo)||0)||(Number(a.sceneNo)||Number(a.sceneNoDisplay)||0)-(Number(b.sceneNo)||Number(b.sceneNoDisplay)||0))}
-function renderScenes(){const allRows=filteredScenes(true),rows=allRows.filter(s=>!state.scenes.keyword||sceneLocation(s.sceneLabel).includes(state.scenes.keyword)),times=[...new Set(getScenes().map(s=>s.timeTag).filter(Boolean))],inouts=[...new Set(getScenes().map(s=>s.inout).filter(Boolean))];const head=`<div class="scene-row scene-head"><span>集</span><span>场</span><span>场景</span><span>日夜</span><span>内外</span></div>`;const body=allRows.map(s=>{const search=sceneLocation(s.sceneLabel);return`<button class="scene-row" data-scene-id="${esc(s.episodeId)}" data-scene-key="${esc(s.key)}" data-version-id="${esc(s.versionId)}" data-scene-search="${esc(search)}" ${state.scenes.keyword&&!search.includes(state.scenes.keyword)?'hidden':''}><span>${esc(s.episodeNoDisplay)}集</span><span>${esc(s.sceneNoDisplay)}场</span><span class="scene-place">${esc(search)}</span><span>${esc(s.timeTag||'—')}</span><span>${esc(s.inout||'—')}</span></button>`}).join('');return`<section class="page"><div class="scene-filters"><span class="scope-label">${esc(selectedRangeLabel())}</span><select id="sceneTime" class="select"><option value="">全部日夜</option>${times.map(x=>`<option ${state.scenes.timeTag===x?'selected':''}>${esc(x)}</option>`).join('')}</select><select id="sceneInout" class="select"><option value="">全部内外</option>${inouts.map(x=>`<option ${state.scenes.inout===x?'selected':''}>${esc(x)}</option>`).join('')}</select><input id="sceneKeyword" type="search" value="${esc(state.scenes.keyword)}" placeholder="场景关键词" style="height:38px;padding:0 11px;min-width:130px"><span id="sceneCount" class="meta">${rows.length}场</span></div><div class="content-scroll">${head}${body||`<div class="empty"><div>没有符合条件的场次</div></div>`}</div></section>`}
+function renderScenes(){const allRows=filteredScenes(true),rows=allRows.filter(s=>!state.scenes.keyword||sceneLocation(s.sceneLabel).includes(state.scenes.keyword)),times=[...new Set(getScenes().map(s=>s.timeTag).filter(Boolean))],inouts=[...new Set(getScenes().map(s=>s.inout).filter(Boolean))];const head=`<div class="scene-row scene-head"><span>集</span><span>场</span><span>场景</span><span>日夜</span><span>内外</span></div>`;const body=allRows.map(s=>{const search=sceneLocation(s.sceneLabel);return`<button class="scene-row" data-scene-id="${esc(s.episodeId)}" data-scene-key="${esc(s.key)}" data-version-id="${esc(s.versionId)}" data-scene-search="${esc(search)}" ${state.scenes.keyword&&!search.includes(state.scenes.keyword)?'hidden':''}><span>${esc(s.episodeNoDisplay)}集</span><span>${esc(s.sceneNoDisplay)}场</span><span class="scene-place">${esc(search)}</span><span>${esc(s.timeTag||'—')}</span><span>${esc(s.inout||'—')}</span></button>`}).join('');return`<section class="page"><div class="scene-filters filter-strip"><span class="scope-label filter-control filter-scope">${esc(selectedRangeLabel())}</span><select id="sceneTime" class="select filter-control"><option value="">全部日夜</option>${times.map(x=>`<option ${state.scenes.timeTag===x?'selected':''}>${esc(x)}</option>`).join('')}</select><select id="sceneInout" class="select filter-control"><option value="">全部内外</option>${inouts.map(x=>`<option ${state.scenes.inout===x?'selected':''}>${esc(x)}</option>`).join('')}</select><input id="sceneKeyword" class="filter-control filter-search" type="search" value="${esc(state.scenes.keyword)}" placeholder="场景关键词"><span id="sceneCount" class="meta filter-count">${rows.length}场</span></div><div class="content-scroll">${head}${body||`<div class="empty"><div>没有符合条件的场次</div></div>`}</div></section>`}
 function renderMindMap(){const rows=mindMapScenes(),tree=buildMindMapTree(rows),nodes=tree.children.map(node=>renderMindMapNode(node,1)).join('');return`<section class="page mindmap-page"><div class="mindmap-toolbar"><span class="scope-label">${esc(selectedRangeLabel())}</span><button id="mindMapZoomOut" class="small-btn" aria-label="缩小">−</button><button id="mindMapZoomLabel" class="small-btn zoom-label" aria-label="恢复百分之百">${Math.round(state.mindmap.scale*100)}%</button><button id="mindMapZoomIn" class="small-btn" aria-label="放大">＋</button><button id="mindMapFit" class="small-btn">适应</button><span class="meta">${rows.length}场</span></div><div id="mindMapViewport" class="mindmap-viewport"><div id="mindMapCanvas" class="mindmap-canvas" style="transform:translate(${state.mindmap.panX}px,${state.mindmap.panY}px) scale(${state.mindmap.scale})">${nodes||`<div class="mindmap-empty">当前范围暂无可生成的场景层级</div>`}</div><div class="mindmap-hint">单指拖动画布 · 双指缩放 · 点击节点展开/折叠</div></div></section>`}
 function filteredMaterials(ignoreQuery=false){const f=state.materials;return materialsData().filter(m=>(ignoreQuery||!f.query||String(m.content||'').includes(f.query))&&(f.tag==='全部'||m.tag===f.tag)&&(f.versionFilter==='all'||m.isCurrent))}
-function renderMaterials(){const allRows=filteredMaterials(true),rows=allRows.filter(m=>!state.materials.query||String(m.content||'').includes(state.materials.query)),tags=['全部',...new Set(materialsData().map(m=>m.tag).filter(Boolean))];if(state.materials.selectedId&&!allRows.some(m=>m._id===state.materials.selectedId))state.materials.selectedId='';const selected=materialsData().find(m=>m._id===state.materials.selectedId)||null;const list=allRows.map(m=>{const search=String(m.content||'');return`<div class="material-item ${m._id===state.materials.selectedId?'active':''}" data-material-id="${esc(m._id)}" data-material-search="${esc(search)}" ${state.materials.query&&!search.includes(state.materials.query)?'hidden':''}><div class="material-text">${esc(search)}</div>${m.tag?`<span class="tag">${esc(m.tag)}</span>`:''}</div>`}).join('');return`<section class="page"><div class="toolbar"><span class="scope-label">${esc(selectedRangeLabel())}</span><input id="materialSearch" type="search" value="${esc(state.materials.query)}" placeholder="搜索素材……"><select id="materialTag" class="select">${tags.map(t=>`<option ${state.materials.tag===t?'selected':''}>${esc(t)}</option>`).join('')}</select><button class="small-btn ${state.materials.versionFilter==='current'?'active':''}" data-action="toggle-material-version">${state.materials.versionFilter==='current'?'当前版本':'全部版本'}</button><span id="materialCount" class="meta">${rows.length}条</span></div><div class="material-layout ${selected?'material-selected':''}"><div class="pane material-list-pane"><div class="material-list">${list||`<div class="empty"><div>暂无素材</div></div>`}</div></div><div class="pane material-detail-pane">${selected?renderMaterialDetail(selected):`<div class="empty"><div>点选素材查看出处</div></div>`}</div></div></section>`}
+function renderMaterials(){const allRows=filteredMaterials(true),rows=allRows.filter(m=>!state.materials.query||String(m.content||'').includes(state.materials.query)),tags=['全部',...new Set(materialsData().map(m=>m.tag).filter(Boolean))];if(state.materials.selectedId&&!allRows.some(m=>m._id===state.materials.selectedId))state.materials.selectedId='';const selected=materialsData().find(m=>m._id===state.materials.selectedId)||null;const list=allRows.map(m=>{const search=String(m.content||'');return`<div class="material-item ${m._id===state.materials.selectedId?'active':''}" data-material-id="${esc(m._id)}" data-material-search="${esc(search)}" ${state.materials.query&&!search.includes(state.materials.query)?'hidden':''}><div class="material-text">${esc(search)}</div>${m.tag?`<span class="tag">${esc(m.tag)}</span>`:''}</div>`}).join('');return`<section class="page"><div class="toolbar material-filters filter-strip"><span class="scope-label filter-control filter-scope">${esc(selectedRangeLabel())}</span><input id="materialSearch" class="filter-control filter-search" type="search" value="${esc(state.materials.query)}" placeholder="搜索素材"><select id="materialTag" class="select filter-control">${tags.map(t=>`<option ${state.materials.tag===t?'selected':''}>${esc(t)}</option>`).join('')}</select><button class="small-btn filter-control ${state.materials.versionFilter==='current'?'active':''}" data-action="toggle-material-version">${state.materials.versionFilter==='current'?'当前版本':'全部版本'}</button><span id="materialCount" class="meta filter-count">${rows.length}条</span></div><div class="material-layout ${selected?'material-selected':''}"><div class="pane material-list-pane"><div class="material-list">${list||`<div class="empty"><div>暂无素材</div></div>`}</div></div><div class="pane material-detail-pane">${selected?renderMaterialDetail(selected):`<div class="empty"><div>点选素材查看出处</div></div>`}</div></div></section>`}
 function renderMaterialDetail(m){const found=findScene(m.episodeId,m.sceneKey,m.versionId);const scene=found?.scene;return `<div class="detail"><div class="detail-card"><button class="mobile-back" data-action="back-material" style="margin-bottom:10px">‹ 素材列表</button><div class="detail-text">${esc(m.content||'')}</div>${m.tag?`<span class="tag">${esc(m.tag)}</span>`:''}<div class="detail-meta"><div>出处：第${esc(m.episodeNo)}集 · 第${esc(m.sceneNoDisplay||scene?.sceneNoDisplay||'—')}场</div><div>场景：${esc(sceneLocation(scene?.sceneLabel||''))}</div>${m.roleName?`<div>角色：${esc(m.roleName)}</div>`:''}<div>版本：${esc(m.versionName)}${m.isCurrent?'（当前版本）':''}</div>${m.createdAt?`<div>添加时间：${esc(fmtDate(m.createdAt))}</div>`:''}</div><div class="detail-actions"><button class="primary-btn" data-action="jump-material" data-material-id="${esc(m._id)}">查看原文</button></div></div></div>`}
 function bindCommon(){document.querySelectorAll('[data-nav]').forEach(b=>b.onclick=()=>{const target=b.dataset.nav;if(state.navigation.kind==='common'&&target!=='search')state.navigation.kind='project';state.module=target;render()});$('#settingsButton').onclick=()=>openOverlay('settings');$('#navigatorButton').onclick=()=>state.projects.length&&openOverlay('navigator');$('#projectButton').onclick=()=>state.projects.length&&openOverlay('navigator');$('#sideSettings').onclick=()=>openOverlay('settings');$('#sideUpdate').onclick=()=>$('#dataInput').click();document.querySelectorAll('[data-action="update"]').forEach(b=>b.onclick=()=>$('#dataInput').click())}
 function bindModule(){if(state.module==='search')bindSearch();if(state.module==='roles')bindRoles();if(state.module==='scenes')bindScenes();if(state.module==='mindmap')bindMindMap();if(state.module==='materials')bindMaterials();document.querySelectorAll('[data-action="close-reader"]').forEach(b=>b.onclick=()=>{state.search.reader=null;state.roles.reader=null;state.scenes.reader=null;state.materials.reader=null;if(state.module==='search')updateSearchWorkspace();else render()})}
