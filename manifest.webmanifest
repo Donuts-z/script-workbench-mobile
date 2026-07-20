@@ -1,0 +1,26 @@
+{
+  "name": "剧本查阅｜移动端工作台",
+  "short_name": "剧本查阅",
+  "description": "在 iPhone 与 iPad 上离线查阅剧本、角色、场次、素材和场景思维导图。",
+  "lang": "zh-CN",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#fdf5d7",
+  "theme_color": "#fdf5d7",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
