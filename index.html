@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no" />
-  <meta name="theme-color" content="#fdf5d7" />
+  <meta name="theme-color" content="#F4F2EC" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="剧本查阅" />
@@ -126,6 +126,198 @@
     .nav-common-row{margin:3px 0 4px 6px;border-left:1px solid var(--border);padding-left:5px}
     @media(min-width:720px){.navigator-drawer{width:370px}.scope-label{max-width:50vw}}
     @media(max-width:719px){.header{gap:4px;padding-left:6px;padding-right:7px}.header-menu{width:40px}.settings-gear{width:40px}.project-button{font-size:13px}.update-time{display:none}.scope-label{max-width:34vw}.full-text{padding-left:12px;padding-right:12px}.toolbar input[type="search"]{min-width:0;width:100%}}
+
+
+    /* ===== v1.3 完整视觉升级：轻专业文档感 ===== */
+    :root{
+      --bg:#F4F2EC;--panel:#FAF9F6;--card:#FFFFFF;--hover:#F3EBD9;--accent:#DDA20C;
+      --primary:#0B315E;--text:#1C2633;--secondary:#687385;--muted:#98A1AE;
+      --border:rgba(11,49,94,.085);--border-strong:rgba(11,49,94,.14);
+      --shadow:0 10px 30px rgba(24,47,73,.07);--shadow-float:0 18px 52px rgba(20,42,68,.13);
+      --nav-h:72px;--header-h:64px;--sidebar-w:208px;--reader-size:15px;
+      --radius-s:10px;--radius-m:16px;--radius-l:22px;
+    }
+    :root[data-theme="dark"]{
+      --bg:#10151C;--panel:#151C25;--card:#1B2430;--hover:#252D38;--accent:#E2B13D;
+      --primary:#9AC4FF;--text:#F1F4F8;--secondary:#C3CCD7;--muted:#8996A6;
+      --border:rgba(255,255,255,.075);--border-strong:rgba(255,255,255,.13);
+      --shadow:0 14px 36px rgba(0,0,0,.22);--shadow-float:0 22px 60px rgba(0,0,0,.38);
+    }
+    html{background:var(--bg)}
+    body{background:var(--bg);font-feature-settings:"kern" 1;-webkit-font-smoothing:antialiased}
+    button{transition:background-color .16s ease,color .16s ease,border-color .16s ease,transform .12s ease,box-shadow .16s ease}
+    button:active{transform:scale(.975)}
+    svg{display:block}
+    .icon-button svg,.nav-btn .ico svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+    .app{background:linear-gradient(145deg,color-mix(in srgb,var(--bg) 96%,white),var(--bg))}
+    .header{
+      padding:env(safe-area-inset-top) 10px 0 10px;border-bottom:0;
+      background:color-mix(in srgb,var(--panel) 88%,transparent);backdrop-filter:blur(22px) saturate(1.15);
+      box-shadow:0 1px 0 var(--border);z-index:40;
+    }
+    .icon-button{width:42px;height:42px;border-radius:13px;color:var(--secondary);background:transparent}
+    .icon-button:hover,.icon-button:active{background:var(--card);box-shadow:0 4px 14px rgba(22,43,69,.06);color:var(--primary)}
+    .project-button{font-size:15px;font-weight:760;letter-spacing:-.01em;color:var(--text);padding:7px 9px;border-radius:12px}
+    .project-button:hover{background:color-mix(in srgb,var(--card) 72%,transparent)}
+    .update-time{padding:5px 8px;border-radius:999px;background:var(--card);border:1px solid var(--border);font-variant-numeric:tabular-nums}
+
+    .bottom-nav{
+      margin:0 8px calc(7px + env(safe-area-inset-bottom));padding:5px 6px;
+      border:1px solid var(--border);border-radius:20px;background:color-mix(in srgb,var(--panel) 92%,transparent);
+      box-shadow:0 10px 28px rgba(20,42,68,.12);backdrop-filter:blur(22px) saturate(1.15);align-self:end;
+    }
+    .nav-btn{position:relative;min-height:53px;border-radius:15px;color:var(--muted);font-size:10px;font-weight:560;gap:3px}
+    .nav-btn .ico{width:26px;height:25px;display:grid;place-items:center;color:currentColor}
+    .nav-btn.active{background:transparent;color:var(--primary);font-weight:740}
+    .nav-btn.active::after{content:"";position:absolute;bottom:1px;width:18px;height:3px;border-radius:999px;background:var(--accent)}
+    .nav-btn:hover{background:color-mix(in srgb,var(--hover) 62%,transparent)}
+
+    .sidebar{background:color-mix(in srgb,var(--panel) 94%,transparent);border-right:1px solid var(--border);backdrop-filter:blur(22px)}
+    .brand{padding:7px 10px 24px;font-size:16px;letter-spacing:-.01em;color:var(--primary)}
+    .brand img{width:36px;height:36px;border-radius:12px;box-shadow:0 7px 20px rgba(11,49,94,.14)}
+    .side-nav{gap:5px}
+    .side-nav .nav-btn,.side-bottom .nav-btn{border-radius:13px;padding:0 14px;color:var(--secondary);font-weight:620}
+    .side-nav .nav-btn.active{background:var(--card);color:var(--primary);box-shadow:0 6px 20px rgba(26,47,72,.06)}
+    .side-nav .nav-btn.active::after{left:0;top:12px;bottom:auto;width:3px;height:22px}
+    .side-bottom{border-top:1px solid var(--border);padding-top:12px}
+
+    .main{padding:0 0 1px;background:transparent}
+    .page{background:transparent}
+    .toolbar,.scene-filters,.mindmap-toolbar{
+      margin:10px 12px 8px;padding:7px;border:1px solid var(--border);border-radius:17px;
+      background:color-mix(in srgb,var(--card) 94%,transparent);box-shadow:0 5px 18px rgba(31,51,75,.045);gap:7px;
+    }
+    input,select{background:color-mix(in srgb,var(--bg) 55%,var(--card));border:1px solid transparent;border-radius:12px;color:var(--text)}
+    input::placeholder{color:var(--muted)}
+    input:focus,select:focus{background:var(--card);border-color:color-mix(in srgb,var(--primary) 40%,transparent);box-shadow:0 0 0 3px color-mix(in srgb,var(--primary) 10%,transparent)}
+    .toolbar input[type="search"]{height:42px;padding:0 14px;font-size:14px}
+    .select,.small-btn,.primary-btn{height:38px;border-radius:11px;border:1px solid var(--border);background:var(--card);font-size:12px;color:var(--secondary)}
+    .small-btn:hover{border-color:var(--border-strong);color:var(--primary);background:var(--panel)}
+    .small-btn.active{background:color-mix(in srgb,var(--primary) 9%,var(--card));border-color:color-mix(in srgb,var(--primary) 20%,transparent);color:var(--primary)}
+    .primary-btn{background:var(--primary);color:white;border-color:var(--primary);font-weight:720;box-shadow:0 6px 16px color-mix(in srgb,var(--primary) 18%,transparent)}
+    :root[data-theme="dark"] .primary-btn{color:#0F1720}
+    .scope-label{max-width:44vw;padding:7px 10px;background:color-mix(in srgb,var(--primary) 7%,var(--card));border:1px solid color-mix(in srgb,var(--primary) 10%,transparent);color:var(--primary);font-weight:650}
+    .meta{font-size:11px;color:var(--muted)}
+
+    .content-scroll{scrollbar-color:color-mix(in srgb,var(--primary) 18%,transparent) transparent}
+    .section-title{height:46px;margin:0 12px;padding:0 4px;border-bottom:1px solid var(--border);color:var(--secondary);font-weight:650}
+    .result-row,.dialogue-row,.scene-row{
+      margin:5px 10px;width:calc(100% - 20px);border:1px solid transparent;border-radius:13px;background:color-mix(in srgb,var(--card) 94%,transparent);box-shadow:0 2px 8px rgba(24,45,70,.025);
+    }
+    .result-row:hover,.dialogue-row:hover,.scene-row:hover,.result-row.active{background:var(--card);border-color:var(--border);box-shadow:0 7px 18px rgba(25,46,70,.06)}
+    .result-row.active{box-shadow:inset 3px 0 0 var(--accent),0 7px 18px rgba(25,46,70,.06)}
+    .result-pos{color:var(--primary);font-size:11px;font-variant-numeric:tabular-nums}
+    mark{background:color-mix(in srgb,var(--accent) 24%,transparent);border:0;border-radius:4px;padding:1px 2px;color:inherit;box-shadow:inset 0 -1px 0 color-mix(in srgb,var(--accent) 60%,transparent)}
+
+    .full-text{background:transparent;padding:8px 12px 102px}
+    .full-text-inner{max-width:880px;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:22px clamp(15px,4vw,34px);box-shadow:var(--shadow)}
+    .full-common,.full-episode{margin-bottom:34px}
+    .full-doc-title,.full-episode-title{
+      position:sticky;top:-1px;margin:0 0 16px;padding:10px 0 11px;border:0;border-bottom:1px solid var(--border);border-radius:0;
+      background:color-mix(in srgb,var(--card) 94%,transparent);box-shadow:none;backdrop-filter:blur(14px);font-size:16px;color:var(--primary);letter-spacing:-.01em;
+    }
+    .full-scene{padding:16px 0 21px;border-bottom:1px solid var(--border)}
+    .full-scene-head{display:inline-flex;flex-wrap:wrap;gap:2px 8px;margin:0 0 12px;padding:7px 10px;border-radius:9px;background:color-mix(in srgb,var(--primary) 7%,var(--card));color:var(--primary);font-size:11px}
+    .full-scene-head small{width:100%;color:var(--muted)}
+    .full-prose{line-height:1.82;color:var(--text);letter-spacing:.005em}
+    .full-prose p{margin-bottom:9px}
+
+    .reader{background:var(--card)}
+    .reader-head{padding:11px 14px;background:color-mix(in srgb,var(--panel) 80%,var(--card));border-bottom:1px solid var(--border)}
+    .reader-title strong{font-size:15px;color:var(--primary)}
+    .reader-body{line-height:1.82;padding:22px clamp(16px,4vw,34px) 94px}
+    .reader-footer{height:58px;background:color-mix(in srgb,var(--card) 88%,transparent);box-shadow:0 -8px 24px rgba(22,42,67,.055)}
+    .reader-footer button{border-radius:12px;color:var(--primary);font-weight:650}
+
+    .role-row{height:48px;margin:3px 8px;width:calc(100% - 16px);border:0;border-radius:12px;padding:0 12px}
+    .role-row.active,.role-row:hover{background:var(--card);box-shadow:inset 3px 0 0 var(--accent),0 4px 14px rgba(26,46,70,.045)}
+    .role-name{font-weight:720;color:var(--text)}
+    .role-list,.material-list{padding:4px 0 20px}
+    .dialogue-row{min-height:54px;padding:10px 12px;align-items:flex-start}
+    .dialogue-source{font-size:10px;color:var(--muted);margin-bottom:3px}
+
+    .scene-row{min-height:44px;height:auto;padding:8px 12px;font-size:12px}
+    .scene-head{margin-top:0!important;background:transparent!important;border:0!important;box-shadow:none!important;color:var(--muted)}
+    .scene-place{font-weight:650;color:var(--text)}
+
+    .material-item{margin:7px 10px;padding:14px;border:1px solid var(--border);border-radius:15px;background:var(--card);box-shadow:0 4px 14px rgba(25,45,70,.035)}
+    .material-item:hover,.material-item.active{background:var(--card);border-color:color-mix(in srgb,var(--primary) 20%,transparent);box-shadow:inset 3px 0 0 var(--accent),0 9px 22px rgba(25,45,70,.07)}
+    .material-text{font-size:14px;line-height:1.65}
+    .tag{margin-top:9px;background:color-mix(in srgb,var(--accent) 14%,var(--card));color:#8A6410;font-weight:650;border:1px solid color-mix(in srgb,var(--accent) 18%,transparent)}
+    :root[data-theme="dark"] .tag{color:#F3CB6A}
+    .detail{padding:12px 16px 24px}
+    .detail-card{border:1px solid var(--border);border-radius:20px;padding:22px;box-shadow:var(--shadow)}
+    .detail-text{font-size:16px;line-height:1.82}
+
+    .mindmap-page{padding-bottom:2px}
+    .mindmap-toolbar{flex-wrap:nowrap}
+    .mindmap-viewport{margin:0 12px 12px;border:1px solid var(--border);border-radius:20px;background-color:var(--card);background-image:linear-gradient(color-mix(in srgb,var(--primary) 4%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--primary) 4%,transparent) 1px,transparent 1px);background-size:28px 28px;box-shadow:var(--shadow)}
+    .mindmap-canvas{padding:30px 34px}
+    .tree-node-wrap{margin-bottom:8px}
+    .tree-node-row{gap:7px}
+    .tree-node-button{
+      min-height:37px;max-width:330px;padding:7px 11px;border:1px solid var(--border)!important;border-left:4px solid var(--node-color)!important;
+      border-radius:12px;background:var(--card)!important;color:var(--text)!important;box-shadow:0 5px 16px rgba(26,47,72,.075);font-weight:inherit;
+    }
+    .tree-node-button:hover{box-shadow:0 9px 22px rgba(26,47,72,.12);transform:translateY(-1px)}
+    .tree-arrow{color:var(--node-color);font-weight:900;opacity:1}
+    .tree-label{font-weight:700}
+    .tree-count{min-width:22px;height:21px;background:color-mix(in srgb,var(--node-color) 11%,var(--card))!important;border:0!important;color:var(--node-color)!important;font-weight:800}
+    .tree-children{margin:8px 0 0 25px;padding-left:16px;border-left:1px solid color-mix(in srgb,var(--node-color) 24%,var(--border))}
+    .mindmap-hint{right:20px;bottom:20px;padding:8px 11px;background:color-mix(in srgb,var(--card) 89%,transparent);border-radius:12px;color:var(--secondary);box-shadow:0 8px 22px rgba(24,45,70,.09)}
+
+    .overlay{background:rgba(18,26,36,.34);backdrop-filter:blur(4px)}
+    .sheet{background:var(--panel);border:1px solid var(--border);box-shadow:var(--shadow-float)}
+    .sheet-title{font-size:16px;color:var(--primary)}
+    .settings-grid{border-bottom:1px solid var(--border)}
+    .navigator-drawer{background:var(--panel);border-right:1px solid var(--border);box-shadow:var(--shadow-float)}
+    .navigator-head{height:58px;border-bottom:1px solid var(--border);padding:0 10px 10px}
+    .navigator-head img{width:38px;height:38px;border-radius:12px;box-shadow:0 6px 18px rgba(11,49,94,.12)}
+    .navigator-head strong{font-size:17px;color:var(--primary)}
+    .nav-project-card{margin-bottom:10px;border:0;border-radius:15px;background:var(--card);box-shadow:0 4px 16px rgba(25,45,70,.04)}
+    .nav-tree-row{min-height:45px;border-bottom:1px solid color-mix(in srgb,var(--border) 72%,transparent)}
+    .nav-tree-row.selected{background:color-mix(in srgb,var(--primary) 7%,var(--card));box-shadow:inset 3px 0 0 var(--accent)}
+    .nav-select-label{font-size:13px;font-weight:620}.nav-select-meta{font-size:10px}
+    .nav-children{background:color-mix(in srgb,var(--bg) 46%,var(--panel))}
+    .toast{background:rgba(27,36,48,.94);box-shadow:0 10px 30px rgba(0,0,0,.18);backdrop-filter:blur(12px)}
+
+    @media(min-width:720px){
+      .header{padding-left:18px;padding-right:18px}
+      .main{padding:0 8px 8px}
+      .toolbar,.scene-filters,.mindmap-toolbar{margin-left:8px;margin-right:8px}
+      .full-text{padding:8px 8px 28px}
+      .mindmap-viewport{margin-left:8px;margin-right:8px;margin-bottom:8px}
+      .role-list,.material-list{background:color-mix(in srgb,var(--panel) 50%,transparent)}
+    }
+    @media(min-width:1024px){
+      :root{--sidebar-w:218px}
+      .main{padding:0 14px 14px}
+      .toolbar,.scene-filters,.mindmap-toolbar{margin-top:12px;margin-left:0;margin-right:0}
+      .full-text{padding-left:0;padding-right:0}
+      .full-text-inner{max-width:960px}
+      .split{grid-template-columns:350px minmax(0,1fr);gap:12px}
+      .pane+.pane{border-left:0}
+      .search-list-pane,.role-list-pane,.material-list-pane{border:1px solid var(--border);border-radius:18px;background:color-mix(in srgb,var(--panel) 62%,transparent);overflow:hidden}
+      .search-reader-pane,.role-detail-pane,.material-detail-pane{border:1px solid var(--border);border-radius:18px;background:var(--card);overflow:hidden;box-shadow:0 6px 20px rgba(24,44,68,.045)}
+      .role-layout{grid-template-columns:240px 1fr;gap:12px}.material-layout{grid-template-columns:minmax(330px,40%) 1fr;gap:12px}
+      .mindmap-viewport{margin-left:0;margin-right:0;margin-bottom:0}
+    }
+    @media(max-width:719px){
+      .header{padding-left:7px;padding-right:7px}
+      .toolbar,.scene-filters,.mindmap-toolbar{margin:7px 8px 6px;border-radius:15px}
+      .scope-label{max-width:38vw;padding:6px 8px}
+      .full-text{padding:4px 8px 96px}
+      .full-text-inner{border-radius:17px;padding:18px 14px;box-shadow:0 6px 20px rgba(24,45,70,.045)}
+      .full-doc-title,.full-episode-title{font-size:15px}
+      .result-row,.dialogue-row,.scene-row{margin-left:7px;margin-right:7px;width:calc(100% - 14px)}
+      .bottom-nav{margin-left:7px;margin-right:7px}
+      .mindmap-viewport{margin:0 8px 8px;border-radius:17px}
+      .mindmap-hint{right:14px;bottom:14px;max-width:75vw}
+      .tree-node-button{max-width:260px}
+      .navigator-drawer{width:min(90vw,380px);border-radius:0 20px 20px 0}
+    }
+
   </style>
 </head>
 <body>
@@ -134,15 +326,15 @@
     <div class="brand"><img src="icons/icon-192.png" alt="" /> <span>剧本查阅</span></div>
     <div id="sideNav" class="side-nav"></div>
     <div class="side-bottom">
-      <button id="sideUpdate" class="nav-btn"><span class="ico">↻</span><span>更新数据</span></button>
-      <button id="sideSettings" class="nav-btn"><span class="ico">⚙</span><span>设置</span></button>
+      <button id="sideUpdate" class="nav-btn"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 8a7.5 7.5 0 1 0 1 7"/><path d="M19 3.5V8h-4.5"/></svg></span><span>更新数据</span></button>
+      <button id="sideSettings" class="nav-btn"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.2 13.5a7.8 7.8 0 0 0 0-3l2-1.5-2-3.4-2.4 1a8.3 8.3 0 0 0-2.6-1.5L14 2.5h-4l-.3 2.6a8.3 8.3 0 0 0-2.6 1.5l-2.4-1-2 3.4 2 1.5a7.8 7.8 0 0 0 0 3l-2 1.5 2 3.4 2.4-1a8.3 8.3 0 0 0 2.6 1.5l.3 2.6h4l.3-2.6a8.3 8.3 0 0 0 2.6-1.5l2.4 1 2-3.4z"/></svg></span><span>设置</span></button>
     </div>
   </aside>
   <header class="header">
-    <button id="navigatorButton" class="icon-button header-menu" aria-label="打开项目导航">☰</button>
+    <button id="navigatorButton" class="icon-button header-menu" aria-label="打开项目导航"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     <button id="projectButton" class="project-button">尚未导入数据</button>
     <span id="updateTime" class="update-time"></span>
-    <button id="settingsButton" class="icon-button settings-gear" aria-label="设置">⚙</button>
+    <button id="settingsButton" class="icon-button settings-gear" aria-label="设置"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.2 13.5a7.8 7.8 0 0 0 0-3l2-1.5-2-3.4-2.4 1a8.3 8.3 0 0 0-2.6-1.5L14 2.5h-4l-.3 2.6a8.3 8.3 0 0 0-2.6 1.5l-2.4-1-2 3.4 2 1.5a7.8 7.8 0 0 0 0 3l-2 1.5 2 3.4 2.4-1a8.3 8.3 0 0 0 2.6 1.5l.3 2.6h4l.3-2.6a8.3 8.3 0 0 0 2.6-1.5l2.4 1 2-3.4z"/></svg></button>
   </header>
   <main id="main" class="main"></main>
   <nav id="bottomNav" class="bottom-nav"></nav>
@@ -152,13 +344,22 @@
 </div>
 <script>
 'use strict';
-const APP_VERSION='1.2.0';
+const APP_VERSION='1.3.0';
+const ICONS={
+  reader:`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 3.5h9l4 4v13h-13z"/><path d="M14.5 3.5v4h4M8.5 11h7M8.5 14.5h7M8.5 18h4.5"/></svg>`,
+  roles:`<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.2"/><path d="M5.5 20c.5-4 2.7-6 6.5-6s6 2 6.5 6"/></svg>`,
+  scenes:`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5h16v13H4zM4 10.5h16M8 3.5v6M16 3.5v6"/><path d="M7.5 14h3M13 14h3.5M7.5 17h7"/></svg>`,
+  mindmap:`<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="6" height="6" rx="1.5"/><rect x="2.5" y="3" width="5" height="4" rx="1.2"/><rect x="16.5" y="3" width="5" height="4" rx="1.2"/><rect x="2.5" y="17" width="5" height="4" rx="1.2"/><rect x="16.5" y="17" width="5" height="4" rx="1.2"/><path d="M9 11 7.5 7M15 11l1.5-4M9 13l-1.5 4M15 13l1.5 4"/></svg>`,
+  materials:`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h12v17H6zM9 3.5v3h6v-3M9 10h6M9 13.5h6M9 17h4"/></svg>`,
+  refresh:`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 8a7.5 7.5 0 1 0 1 7"/><path d="M19 3.5V8h-4.5"/></svg>`,
+  settings:`<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.2 13.5a7.8 7.8 0 0 0 0-3l2-1.5-2-3.4-2.4 1a8.3 8.3 0 0 0-2.6-1.5L14 2.5h-4l-.3 2.6a8.3 8.3 0 0 0-2.6 1.5l-2.4-1-2 3.4 2 1.5a7.8 7.8 0 0 0 0 3l-2 1.5 2 3.4 2.4-1a8.3 8.3 0 0 0 2.6 1.5l.3 2.6h4l.3-2.6a8.3 8.3 0 0 0 2.6-1.5l2.4 1 2-3.4z"/></svg>`
+};
 const MODULES=[
-  {key:'search',label:'搜索',icon:'⌕'},
-  {key:'roles',label:'角色',icon:'人'},
-  {key:'scenes',label:'场次',icon:'场'},
-  {key:'mindmap',label:'导图',icon:'图'},
-  {key:'materials',label:'素材',icon:'摘'}
+  {key:'search',label:'原文',icon:ICONS.reader},
+  {key:'roles',label:'角色',icon:ICONS.roles},
+  {key:'scenes',label:'场次',icon:ICONS.scenes},
+  {key:'mindmap',label:'导图',icon:ICONS.mindmap},
+  {key:'materials',label:'素材',icon:ICONS.materials}
 ];
 const state={
   package:null,projects:[],projectId:'',module:'search',theme:localStorage.getItem('swm_theme')||'light',fontSize:Number(localStorage.getItem('swm_font')||15),
@@ -192,8 +393,8 @@ function selectedHeaderLabel(){const p=currentProject();if(!p)return'尚未导�
 function sceneHierarchyParts(scene){const parts=Array.isArray(scene?.hierarchyParts)?scene.hierarchyParts.map(norm).filter(Boolean):[];if(parts.length)return parts;const label=norm(scene?.sceneLabel||'');const split=label.split(/\s*(?:[｜|>／/]|—|–)\s*/).map(norm).filter(Boolean);return split.length?split:[`第${scene?.episodeNoDisplay||''}集 第${scene?.sceneNoDisplay||''}场`]}
 function mindMapScenes(){return getScenes()}
 function buildMindMapTree(scenes){const root={name:'root',pathKey:'root',count:0,children:[],childrenMap:new Map()};for(const scene of scenes){let current=root;current.count+=1;for(const part of sceneHierarchyParts(scene)){const key=`${current.pathKey}>${part}`;if(!current.childrenMap.has(part)){const node={name:part,pathKey:key,count:0,children:[],childrenMap:new Map()};current.childrenMap.set(part,node);current.children.push(node)}current=current.childrenMap.get(part);current.count+=1}}const finalize=node=>{node.children=Array.from(node.childrenMap.values()).sort((a,b)=>a.name.localeCompare(b.name,'zh-CN'));node.children.forEach(finalize);delete node.childrenMap;return node};return finalize(root)}
-function treeLevelColor(level){return ['#013e75','#2563a8','#f5b70a','#6f4aa8','#1f9d72'][Math.min(Math.max(level-1,0),4)]}
-function renderMindMapNode(node,level=1){const collapsed=!!state.mindmap.collapsed[node.pathKey],hasChildren=!!node.children?.length,color=treeLevelColor(level),textColor=level===3?'#1a1a1a':'#fff',badgeStyle=level===3?'background:rgba(0,0,0,.12);border-color:rgba(0,0,0,.22);color:#1a1a1a':'';return `<div class="tree-node-wrap"><div class="tree-node-row"><button class="tree-node-button" data-tree-key="${esc(node.pathKey)}" style="background:${color};border-color:${color};color:${textColor}"><span class="tree-arrow">${hasChildren?(collapsed?'▸':'▾'):'·'}</span><span class="tree-label">${esc(node.name)}</span><span class="tree-count" style="${badgeStyle}">${node.count}</span></button></div>${!collapsed&&hasChildren?`<div class="tree-children">${node.children.map(child=>renderMindMapNode(child,Math.min(level+1,5))).join('')}</div>`:''}</div>`}
+function treeLevelColor(level){return ['#0b315e','#35688f','#d9a11a','#8067a8','#3f8c76'][Math.min(Math.max(level-1,0),4)]}
+function renderMindMapNode(node,level=1){const collapsed=!!state.mindmap.collapsed[node.pathKey],hasChildren=!!node.children?.length,color=treeLevelColor(level);return `<div class="tree-node-wrap"><div class="tree-node-row"><button class="tree-node-button" data-tree-key="${esc(node.pathKey)}" style="--node-color:${color}"><span class="tree-arrow">${hasChildren?(collapsed?'▸':'▾'):'·'}</span><span class="tree-label">${esc(node.name)}</span><span class="tree-count">${node.count}</span></button></div>${!collapsed&&hasChildren?`<div class="tree-children">${node.children.map(child=>renderMindMapNode(child,Math.min(level+1,5))).join('')}</div>`:''}</div>`}
 const mindMapGesture={mode:'',startX:0,startY:0,originX:0,originY:0,startDistance:0,startScale:1,worldX:0,worldY:0,moved:false,suppressClick:false};
 function clampMindScale(value){return Math.max(.5,Math.min(1.8,Number(value)||1))}
 function applyMindMapTransform(){const canvas=$('#mindMapCanvas'),label=$('#mindMapZoomLabel');if(canvas)canvas.style.transform=`translate(${state.mindmap.panX}px,${state.mindmap.panY}px) scale(${state.mindmap.scale})`;if(label)label.textContent=`${Math.round(state.mindmap.scale*100)}%`}
@@ -221,7 +422,7 @@ function renderScriptParagraph(para,highlight=''){const d=parseDialogue(para?.te
 function renderCommonDocument(full=true,highlight='',targetIndex=-1){const doc=currentProject()?.commonDoc;if(!doc)return`<div class="empty"><div>当前项目没有公共文档</div></div>`;const blocks=(doc.content||[]).map((block,index)=>`<p data-common-index="${index}" id="common-${index}">${highlightHtml(block.text,highlight)}</p>`).join('');if(full)return`<section class="full-common"><div class="full-doc-title">📋 ${esc(doc.title||'公共文档')}<span>${(doc.content||[]).length}段</span></div><div class="full-prose">${blocks}</div></section>`;return`<article class="reader"><div class="reader-head"><button class="icon-button mobile-back" data-action="close-reader">‹</button><div class="reader-title"><strong>${esc(doc.title||'公共文档')}</strong><span>${esc(currentProject()?.name||'')}</span></div></div><div class="reader-body"><div class="reader-inner">${blocks}</div></div>${state.search.results.length?`<div class="reader-footer"><button data-action="prev-search">上一处</button><span class="meta">${state.search.selectedIndex+1}/${state.search.results.length}</span><button data-action="next-search">下一处</button></div>`:''}</article>`}
 function renderFullText(){const p=currentProject();if(!p)return`<div class="empty"><div>暂无原文</div></div>`;if(state.navigation.kind==='common')return`<div class="full-text"><div class="full-text-inner">${renderCommonDocument(true)}</div></div>`;const common=state.navigation.kind==='project'&&p.commonDoc?renderCommonDocument(true):'';const episodes=activeEpisodes().map(ep=>{const scenes=(ep.scenes||[]).map(scene=>`<section class="full-scene" data-scene-key="${esc(scene.key)}"><div class="full-scene-head">第${esc(ep.episodeNoDisplay)}集 · 第${esc(scene.sceneNoDisplay)}场 · ${esc(sceneLocation(scene.sceneLabel))}<small>${esc(scene.timeTag||'—')} · ${esc(scene.inout||'—')}</small></div><div class="full-prose">${(scene.paragraphs||[]).map(para=>renderScriptParagraph(para)).join('')}</div></section>`).join('');return`<section class="full-episode"><div class="full-episode-title">第${esc(ep.episodeNoDisplay)}集<span>${esc(ep.versionName||'')} · ${(ep.scenes||[]).length}场</span></div>${scenes||`<div class="empty"><div>本集暂无原文</div></div>`}</section>`}).join('');return`<div class="full-text"><div class="full-text-inner">${common}${episodes||`<div class="empty"><div>当前范围暂无原文</div></div>`}</div></div>`}
 function renderSearchWorkspace(){const q=norm(state.search.query);if(!q)return renderFullText();state.search.results=buildSearchResults();const reader=state.search.reader;const rows=state.search.results.map((r,i)=>`<button class="result-row ${state.search.selectedIndex===i?'active':''}" data-search-index="${i}"><span class="result-pos">${esc(r.positionLabel||`${r.episodeNo}-${r.sceneNo}`)}</span><span class="one-line">${r.snippet}</span></button>`).join('');return`<div class="split ${reader?'search-reader-active':''}"><div class="pane search-list-pane"><div class="section-title"><span>搜索结果</span><span>${state.search.results.length}处</span></div><div id="searchResults" class="content-scroll">${rows||`<div class="empty"><div>没有匹配内容</div></div>`}</div></div><div class="pane search-reader-pane">${reader?renderReader(reader,'search'):`<div class="empty"><div>点选结果查看原文</div></div>`}</div></div>`}
-function renderSearch(){state.search.results=buildSearchResults();return`<section class="page"><div class="toolbar"><input id="searchInput" type="search" value="${esc(state.search.query)}" placeholder="搜索当前范围……" autocomplete="off" enterkeyhint="search"><span class="scope-label">${esc(selectedRangeLabel())}</span><span id="searchCount" class="meta">${state.search.query?`${state.search.results.length}处`:'原文'}</span></div><div id="searchWorkspace" class="search-workspace">${renderSearchWorkspace()}</div></section>`}
+function renderSearch(){state.search.results=buildSearchResults();return`<section class="page"><div class="toolbar"><input id="searchInput" type="search" value="${esc(state.search.query)}" placeholder="在当前原文中搜索…" autocomplete="off" enterkeyhint="search"><span class="scope-label">${esc(selectedRangeLabel())}</span><span id="searchCount" class="meta">${state.search.query?`${state.search.results.length}处`:'原文'}</span></div><div id="searchWorkspace" class="search-workspace">${renderSearchWorkspace()}</div></section>`}
 function readerPayload(loc,extra={}){const found=findScene(loc.episodeId,loc.sceneKey,loc.versionId);return found?{...loc,...found,...extra}:null}
 function renderReader(payload,source){if(payload?.type==='common')return renderCommonDocument(false,payload.highlight||'',payload.blockIndex);const p=payload?.scene?payload:readerPayload(payload);if(!p)return`<div class="empty"><div>未找到对应原文</div></div>`;const q=payload.highlight||'';const paras=(p.scene.paragraphs||[]).map(para=>renderScriptParagraph(para,q)).join('');const footer=source==='search'&&state.search.results.length?`<div class="reader-footer"><button data-action="prev-search">上一处</button><span class="meta">${state.search.selectedIndex+1}/${state.search.results.length}</span><button data-action="next-search">下一处</button></div>`:'';return `<article class="reader"><div class="reader-head"><button class="icon-button mobile-back" data-action="close-reader">‹</button><div class="reader-title"><strong>第${esc(p.merged.episodeNoDisplay)}集 · 第${esc(p.scene.sceneNoDisplay)}场</strong><span>${esc(sceneLocation(p.scene.sceneLabel))}　${esc(p.scene.timeTag||'—')}　${esc(p.scene.inout||'—')}${p.version?.versionName?`　${esc(p.version.versionName)}`:''}</span></div></div><div class="reader-body"><div class="reader-inner">${paras}</div></div>${footer}</article>`}
 function renderRoles(){const all=roleData(),data=all.filter(r=>!state.roles.query||r.name.includes(state.roles.query));if(!state.roles.selectedName&&all.length&&window.innerWidth>=720)state.roles.selectedName=all[0].name;const selected=all.find(r=>r.name===state.roles.selectedName);const roleRows=all.map(r=>`<button class="role-row ${r.name===state.roles.selectedName?'active':''}" data-role="${esc(r.name)}" ${state.roles.query&&!r.name.includes(state.roles.query)?'hidden':''}><span class="role-name">${esc(r.name)}</span><span class="meta">${r.sceneCount}场 · ${r.lineCount}条</span></button>`).join('');const dialogueRows=(selected?.items||[]).map((d,i)=>`<button class="dialogue-row" data-dialogue-index="${i}"><span class="result-pos">${esc(d.episodeNo)}-${esc(d.sceneNo)}</span><span class="one-line"><div class="dialogue-source">${esc(sceneLocation(d.sceneLabel))}</div><div class="dialogue-text"><b>${esc(d.display||d.character)}：</b>${esc(d.content)}</div></span></button>`).join('');return`<section class="page"><div class="toolbar"><span class="scope-label">${esc(selectedRangeLabel())}</span><input id="roleSearch" type="search" value="${esc(state.roles.query)}" placeholder="搜索角色名……"><span id="roleCount" class="meta">${data.length}人</span></div><div class="role-layout ${state.roles.selectedName?'role-selected':''}"><div class="pane role-list-pane"><div class="role-list">${roleRows||`<div class="empty"><div>暂无角色台词</div></div>`}</div></div><div class="pane role-detail-pane"><div class="section-title"><button class="mobile-back" data-action="back-role">‹ 角色</button><span>${selected?`${esc(selected.name)} · ${selected.sceneCount}场 · ${selected.lineCount}条`:''}</span></div><div class="content-scroll">${dialogueRows||`<div class="empty"><div>请选择角色</div></div>`}</div></div></div></section>`}
