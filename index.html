@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no" />
-  <meta name="theme-color" content="#FBF3D9" />
+  <meta name="theme-color" content="#FDF5D7" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="剧本查阅" />
@@ -438,6 +438,160 @@
       .full-scene-head{font-size:11.5px}
     }
 
+  
+
+    /* ===== v1.5 最终视觉：电脑端暖黄语言的移动化 ===== */
+    :root{
+      --bg:#FDF5D7;--panel:#FFF9EA;--card:#FFFCF5;--hover:#FCE8B5;--accent:#F5B70A;
+      --primary:#1A1A1A;--text:#1A1A1A;--secondary:#625E56;--muted:#969087;
+      --border:rgba(48,45,40,.10);--border-strong:rgba(48,45,40,.17);
+      --shadow:0 5px 18px rgba(74,58,20,.055);--shadow-float:0 18px 50px rgba(55,44,20,.16);
+      --header-h:70px;--nav-h:78px;--radius-control:14px;--radius-card:18px;--radius-panel:24px;
+    }
+    :root[data-theme="dark"]{
+      --bg:#17150F;--panel:#201D15;--card:#28241A;--hover:#3B321A;--accent:#F2B90B;
+      --primary:#FFF8E8;--text:#FFF8E8;--secondary:#D5CBBB;--muted:#9C9488;
+      --border:rgba(255,242,207,.10);--border-strong:rgba(255,242,207,.18);
+      --shadow:0 8px 24px rgba(0,0,0,.22);--shadow-float:0 20px 56px rgba(0,0,0,.42);
+    }
+    html,body{background:var(--bg)!important}
+    body{background-image:none!important;color:var(--text)}
+    .app{background:var(--bg)!important;background-image:none!important;grid-template-rows:calc(var(--header-h) + env(safe-area-inset-top)) minmax(0,1fr) calc(var(--nav-h) + env(safe-area-inset-bottom))}
+    .app,.nav-btn.active,.side-nav .nav-btn.active,.scope-label,.full-text-inner,.full-scene-head,.material-item,.tree-node-button,.nav-tree-row.selected,.mindmap-viewport{background-image:none!important}
+    .main{padding:0!important;background:transparent}
+
+    /* 方案 C：纸张标题式顶部，不使用胶囊 */
+    .header{
+      display:grid;grid-template-columns:44px minmax(0,1fr) 44px;align-items:center;gap:8px;
+      padding:env(safe-area-inset-top) 10px 5px;background:var(--bg)!important;border:0;box-shadow:none;backdrop-filter:none;
+    }
+    .header .icon-button{width:42px;height:42px;border-radius:14px;color:var(--text);background:transparent;box-shadow:none}
+    .header .icon-button:hover,.header .icon-button:active{background:var(--hover);color:var(--text);box-shadow:none}
+    .project-title-button{position:relative;min-width:0;height:60px;padding:6px 6px 10px;text-align:left;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;border-radius:14px;color:var(--text)}
+    .project-title-button:hover,.project-title-button:active{background:rgba(255,255,255,.25)}
+    .project-title-main{display:block;max-width:100%;font-size:17px;font-weight:760;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--text)}
+    .project-title-sub{display:block;max-width:100%;margin-top:3px;font-size:12px;font-weight:650;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--accent)}
+    .project-title-mark{position:absolute;left:6px;bottom:2px;width:34px;height:4px;display:flex;align-items:center;gap:4px;pointer-events:none}
+    .project-title-mark::before{content:"";width:24px;height:3px;border-radius:999px;background:var(--accent)}
+    .project-title-mark i{display:block;width:4px;height:4px;border-radius:50%;background:var(--accent)}
+    .update-time{display:none!important}
+
+    /* 黄、黑、圆：统一控件语言 */
+    button,input,select{color:var(--text)}
+    input,select{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-control);box-shadow:none}
+    input:focus,select:focus{background:var(--card);border-color:var(--accent);box-shadow:0 0 0 3px rgba(245,183,10,.16)}
+    .toolbar,.scene-filters,.mindmap-toolbar{
+      margin:8px 9px 7px;padding:8px;min-height:58px;align-items:center;gap:8px;
+      background:var(--panel)!important;border:1px solid var(--border);border-radius:22px;box-shadow:none;
+    }
+    .select,.small-btn,.primary-btn,.filter-strip .filter-control{
+      height:42px;min-height:42px;border-radius:var(--radius-control);font-size:13px;font-weight:550;line-height:1;
+      color:var(--text);background:var(--card);border:1px solid var(--border);box-shadow:none;
+    }
+    .filter-strip .filter-scope,.scope-label{background:var(--hover)!important;color:var(--text);border-color:rgba(245,183,10,.28);font-weight:720}
+    .filter-strip select.filter-control{
+      background-color:var(--card);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23625E56' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m7 10 5 5 5-5'/%3E%3C/svg%3E");background-position:calc(100% - 12px) 50%;background-size:14px 14px;background-repeat:no-repeat;padding-right:34px;
+    }
+    .filter-strip input.filter-control{font-size:13px}
+    .primary-btn{background:#3A3937;color:var(--accent);border-color:#3A3937;font-weight:750}
+    .small-btn.active{background:var(--hover);border-color:rgba(245,183,10,.35);color:var(--text)}
+    .meta{color:var(--muted)}
+
+    /* 底部圆润导航，黑字黄选中，填满安全区而不留白条 */
+    .bottom-nav{
+      align-self:end;height:64px;margin:0 8px calc(7px + env(safe-area-inset-bottom));padding:4px 6px;
+      background:var(--panel)!important;border:1px solid var(--border);border-radius:24px;box-shadow:0 7px 20px rgba(71,55,20,.10);backdrop-filter:none;
+    }
+    .nav-btn{min-height:54px;border-radius:17px;color:#7D7972;font-size:11px;font-weight:560;gap:3px}
+    .nav-btn .ico{color:currentColor}
+    .nav-btn.active{background:var(--hover)!important;color:var(--text);font-weight:760}
+    .nav-btn.active::after{bottom:1px;width:20px;height:3px;background:var(--accent)}
+
+    /* 原文：场景是主要单位，圆白纸卡＋纯色黄场头 */
+    .full-text{background:transparent;padding:6px 9px 22px}
+    .full-text-inner{max-width:920px;margin:0 auto;padding:0;background:transparent!important;border:0;box-shadow:none}
+    .full-common,.full-episode{margin-bottom:18px}
+    .full-doc-title,.full-episode-title{
+      position:sticky;top:0;margin:0 2px 10px;padding:10px 12px;border:0;border-radius:16px;
+      background:rgba(253,245,215,.94)!important;box-shadow:none;backdrop-filter:blur(8px);color:var(--text);font-size:16px;font-weight:760;
+    }
+    .full-doc-title::before,.full-episode-title::before,.section-title::before{background:var(--accent)}
+    .full-doc-title span,.full-episode-title span{color:var(--muted)}
+    .full-scene{margin:0 0 12px;padding:14px;border:1px solid var(--border);border-radius:20px;background:var(--card);box-shadow:none}
+    .full-scene:last-child{border-bottom:1px solid var(--border)}
+    .full-scene-head{
+      display:block;max-width:100%;margin:0 0 12px;padding:9px 13px;border:0;border-left:0;border-radius:15px;
+      background:var(--hover)!important;color:var(--text);font-size:12px;font-weight:760;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;box-shadow:none;
+    }
+    .full-prose{color:var(--text);line-height:1.78}
+
+    /* 场次和素材：同一套对齐系统 */
+    .filter-strip{min-height:60px;align-items:center}
+    .filter-strip .filter-control{display:inline-flex;align-items:center;justify-content:center;margin:0;padding-top:0;padding-bottom:0;vertical-align:middle}
+    .filter-strip .filter-search{justify-content:flex-start}
+    .filter-strip .filter-count{height:42px;min-height:42px;display:inline-flex;align-items:center;justify-content:center;line-height:1}
+    .scene-row,.result-row,.dialogue-row{
+      margin:5px 8px;width:calc(100% - 16px);min-height:48px;height:auto;padding:9px 12px;border:1px solid var(--border);border-radius:18px;background:var(--card);box-shadow:none;color:var(--text);
+    }
+    .scene-row{grid-template-columns:42px 42px minmax(130px,1fr) 30px 30px;align-items:center;font-size:12.5px}
+    .scene-row:hover,.result-row:hover,.dialogue-row:hover,.result-row.active{background:var(--card);border-color:rgba(245,183,10,.36);box-shadow:none}
+    .scene-place{color:var(--text);font-weight:700}
+    .scene-head{background:transparent!important;border:0;box-shadow:none;color:var(--muted)}
+    .result-pos{color:var(--text)}
+    mark{background:var(--hover);border:0;color:var(--text);box-shadow:none}
+
+    .material-item{margin:7px 9px;padding:15px;border:1px solid var(--border);border-radius:20px;background:var(--card)!important;box-shadow:none;color:var(--text)}
+    .material-item:hover,.material-item.active{background:var(--card)!important;border-color:rgba(245,183,10,.38);box-shadow:inset 4px 0 0 var(--accent)}
+    .tag{background:#FFF0BD;color:#5B491B;border-color:#EFD37C}
+    .detail{padding:10px 12px 24px}.detail-card{border-radius:22px;border-color:var(--border);box-shadow:none;background:var(--card)}
+    .detail-actions .primary-btn{border-radius:16px}
+
+    /* 导图：不用蓝，纯色黄与暖中性色 */
+    .mindmap-viewport{margin:0 9px 9px;border-radius:22px;background-color:var(--card)!important;border-color:var(--border);box-shadow:none}
+    .tree-node-button{border:1px solid var(--border)!important;border-left:4px solid var(--node-color)!important;border-radius:15px;background:var(--card)!important;color:var(--text)!important;box-shadow:none}
+    .tree-node-button:hover{box-shadow:none;transform:none;border-color:rgba(245,183,10,.35)!important}
+    .tree-count{background:#FFF0BD!important;color:#4B422D!important;border:0!important}
+    .mindmap-hint{background:var(--panel);border-radius:15px;color:var(--secondary);box-shadow:none}
+
+    /* 项目抽屉：纯色平面，版本选中绝不渐变 */
+    .overlay{background:rgba(25,22,15,.34);backdrop-filter:blur(3px)}
+    .navigator-drawer{background:var(--panel);border-radius:0 26px 26px 0;box-shadow:var(--shadow-float)}
+    .navigator-head{height:64px;border-bottom:1px solid var(--border)}
+    .navigator-head strong,.sheet-title{color:var(--text)}
+    .nav-project-card{border-radius:20px;background:var(--card);box-shadow:none}
+    .nav-tree-row{border-color:var(--border);border-radius:13px;margin:2px 0}
+    .nav-tree-row.selected{background:var(--hover)!important;box-shadow:inset 4px 0 0 var(--accent)}
+    .nav-select-label{color:var(--text)}
+    .nav-children{background:#FFF8E6}
+    :root[data-theme="dark"] .nav-children{background:#211E16}
+    .nav-version-list .nav-tree-row.selected{background:#FCE8B5!important;box-shadow:none}
+    .nav-version-list .nav-tree-row.selected .nav-select-label{color:#1A1A1A;font-weight:760}
+    .sheet{background:var(--panel);border-radius:24px}
+
+    /* 桌面 / iPad：铺满高度，不留底部空条 */
+    @media(min-width:720px){
+      .app{grid-template-columns:var(--sidebar-w) minmax(0,1fr);grid-template-rows:var(--header-h) minmax(0,1fr)}
+      .header{grid-column:2;grid-row:1;padding:5px 16px;background:var(--bg)!important}
+      .sidebar{background:var(--panel);border-right:1px solid var(--border);padding-bottom:10px}
+      .brand{color:var(--text)}
+      .side-nav .nav-btn,.side-bottom .nav-btn{color:var(--secondary);border-radius:16px}
+      .side-nav .nav-btn.active{background:#3A3937!important;color:var(--accent);box-shadow:none}
+      .side-nav .nav-btn.active::after{display:none}
+      .main{padding:0!important}
+      .full-text{padding-bottom:16px}
+      .scene-row{grid-template-columns:58px 58px minmax(180px,1fr) 56px 56px}
+    }
+    @media(max-width:719px){
+      .header{gap:5px;padding-left:6px;padding-right:6px}
+      .header-menu,.settings-gear{width:42px}
+      .project-title-main{font-size:16px}
+      .project-title-sub{font-size:11.5px}
+      .toolbar,.scene-filters,.mindmap-toolbar{margin:7px 7px 6px;border-radius:20px}
+      .filter-strip .filter-search{width:145px;min-width:145px;flex-basis:145px}
+      .full-scene-head{font-size:11.5px}
+      .navigator-drawer{width:min(90vw,390px)}
+    }
+
   </style>
 </head>
 <body>
@@ -452,8 +606,11 @@
   </aside>
   <header class="header">
     <button id="navigatorButton" class="icon-button header-menu" aria-label="打开项目导航"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-    <button id="projectButton" class="project-button">尚未导入数据</button>
-    <span id="updateTime" class="update-time"></span>
+    <button id="projectButton" class="project-title-button" aria-label="选择项目与剧集">
+      <span id="projectTitle" class="project-title-main">尚未导入数据</span>
+      <span id="projectSubtitle" class="project-title-sub">导入移动端数据后开始查阅</span>
+      <span class="project-title-mark" aria-hidden="true"><i></i></span>
+    </button>
     <button id="settingsButton" class="icon-button settings-gear" aria-label="设置"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.2 13.5a7.8 7.8 0 0 0 0-3l2-1.5-2-3.4-2.4 1a8.3 8.3 0 0 0-2.6-1.5L14 2.5h-4l-.3 2.6a8.3 8.3 0 0 0-2.6 1.5l-2.4-1-2 3.4 2 1.5a7.8 7.8 0 0 0 0 3l-2 1.5 2 3.4 2.4-1a8.3 8.3 0 0 0 2.6 1.5l.3 2.6h4l.3-2.6a8.3 8.3 0 0 0 2.6-1.5l2.4 1 2-3.4z"/></svg></button>
   </header>
   <main id="main" class="main"></main>
@@ -464,7 +621,7 @@
 </div>
 <script>
 'use strict';
-const APP_VERSION='1.4.0';
+const APP_VERSION='1.5.0';
 const ICONS={
   reader:`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 3.5h9l4 4v13h-13z"/><path d="M14.5 3.5v4h4M8.5 11h7M8.5 14.5h7M8.5 18h4.5"/></svg>`,
   roles:`<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.2"/><path d="M5.5 20c.5-4 2.7-6 6.5-6s6 2 6.5 6"/></svg>`,
@@ -513,7 +670,7 @@ function selectedHeaderLabel(){const p=currentProject();if(!p)return'尚未导�
 function sceneHierarchyParts(scene){const parts=Array.isArray(scene?.hierarchyParts)?scene.hierarchyParts.map(norm).filter(Boolean):[];if(parts.length)return parts;const label=norm(scene?.sceneLabel||'');const split=label.split(/\s*(?:[｜|>／/]|—|–)\s*/).map(norm).filter(Boolean);return split.length?split:[`第${scene?.episodeNoDisplay||''}集 第${scene?.sceneNoDisplay||''}场`]}
 function mindMapScenes(){return getScenes()}
 function buildMindMapTree(scenes){const root={name:'root',pathKey:'root',count:0,children:[],childrenMap:new Map()};for(const scene of scenes){let current=root;current.count+=1;for(const part of sceneHierarchyParts(scene)){const key=`${current.pathKey}>${part}`;if(!current.childrenMap.has(part)){const node={name:part,pathKey:key,count:0,children:[],childrenMap:new Map()};current.childrenMap.set(part,node);current.children.push(node)}current=current.childrenMap.get(part);current.count+=1}}const finalize=node=>{node.children=Array.from(node.childrenMap.values()).sort((a,b)=>a.name.localeCompare(b.name,'zh-CN'));node.children.forEach(finalize);delete node.childrenMap;return node};return finalize(root)}
-function treeLevelColor(level){return ['#0b315e','#35688f','#d9a11a','#8067a8','#3f8c76'][Math.min(Math.max(level-1,0),4)]}
+function treeLevelColor(level){return ['#F5B70A','#D9A514','#C7A556','#9B8A68','#777168'][Math.min(Math.max(level-1,0),4)]}
 function renderMindMapNode(node,level=1){const collapsed=!!state.mindmap.collapsed[node.pathKey],hasChildren=!!node.children?.length,color=treeLevelColor(level);return `<div class="tree-node-wrap"><div class="tree-node-row"><button class="tree-node-button" data-tree-key="${esc(node.pathKey)}" style="--node-color:${color}"><span class="tree-arrow">${hasChildren?(collapsed?'▸':'▾'):'·'}</span><span class="tree-label">${esc(node.name)}</span><span class="tree-count">${node.count}</span></button></div>${!collapsed&&hasChildren?`<div class="tree-children">${node.children.map(child=>renderMindMapNode(child,Math.min(level+1,5))).join('')}</div>`:''}</div>`}
 const mindMapGesture={mode:'',startX:0,startY:0,originX:0,originY:0,startDistance:0,startScale:1,worldX:0,worldY:0,moved:false,suppressClick:false};
 function clampMindScale(value){return Math.max(.5,Math.min(1.8,Number(value)||1))}
@@ -533,14 +690,14 @@ function toast(msg){const root=$('#toastRoot');root.innerHTML=`<div class="toast
 function openOverlay(type){state.overlay=type;renderOverlay()}
 function closeOverlay(){state.overlay=null;renderOverlay()}
 function applyTheme(){document.documentElement.dataset.theme=state.theme;document.documentElement.style.setProperty('--reader-size',`${state.fontSize}px`);document.querySelector('meta[name="theme-color"]').content=state.theme==='dark'?'#11161c':'#fdf5d7';localStorage.setItem('swm_theme',state.theme);localStorage.setItem('swm_font',String(state.fontSize))}
-function updateHeader(){const p=currentProject();$('#projectButton').textContent=p?`${selectedHeaderLabel()}⌄`:'尚未导入数据';$('#updateTime').textContent=state.package?.exportedAt?`更新 ${fmtDate(state.package.exportedAt)}`:''}
+function updateHeader(){const p=currentProject(),title=$('#projectTitle'),subtitle=$('#projectSubtitle');if(title)title.textContent=p?p.name:'尚未导入数据';if(subtitle)subtitle.textContent=p?selectedRangeLabel():'导入移动端数据后开始查阅'}
 function renderNav(){const html=MODULES.map(m=>`<button class="nav-btn ${state.module===m.key?'active':''}" data-nav="${m.key}"><span class="ico">${m.icon}</span><span>${m.label}</span></button>`).join('');$('#bottomNav').innerHTML=html;$('#sideNav').innerHTML=html}
 function render(){applyTheme();updateHeader();renderNav();const main=$('#main');if(!currentProject()){main.innerHTML=renderNoData();bindCommon();return}if(state.module==='search')main.innerHTML=renderSearch();if(state.module==='roles')main.innerHTML=renderRoles();if(state.module==='scenes')main.innerHTML=renderScenes();if(state.module==='mindmap')main.innerHTML=renderMindMap();if(state.module==='materials')main.innerHTML=renderMaterials();bindCommon();bindModule();renderOverlay()}
 function renderNoData(){return `<div class="empty"><div><strong>还没有移动端数据</strong><div>请先在电脑版点击“导出移动端数据”，再从这里导入 JSON 数据包。</div><button class="primary-btn" data-action="update" style="margin-top:18px">导入数据</button></div></div>`}
 function episodeOptions(selected='',allLabel='全部集数'){return `<option value="">${allLabel}</option>`+sortedEpisodes().map(ep=>`<option value="${esc(ep.id)}" ${selected===ep.id?'selected':''}>第${esc(ep.episodeNoDisplay??ep.episodeNo)}集</option>`).join('')}
 function renderScriptParagraph(para,highlight=''){const d=parseDialogue(para?.text);return d?`<p data-paragraph-id="${esc(para?.id||'')}"><span class="dialogue-name">${esc(d.display||d.character)}</span>：${d.emotion?`<span class="meta">（${esc(d.emotion)}）</span>`:''}${highlightHtml(d.content,highlight)}</p>`:`<p data-paragraph-id="${esc(para?.id||'')}"><span class="action-line">⊿${highlightHtml(norm(para?.text).replace(/^[△⊿]\s*/,''),highlight)}</span></p>`}
 function renderCommonDocument(full=true,highlight='',targetIndex=-1){const doc=currentProject()?.commonDoc;if(!doc)return`<div class="empty"><div>当前项目没有公共文档</div></div>`;const blocks=(doc.content||[]).map((block,index)=>`<p data-common-index="${index}" id="common-${index}">${highlightHtml(block.text,highlight)}</p>`).join('');if(full)return`<section class="full-common"><div class="full-doc-title">📋 ${esc(doc.title||'公共文档')}<span>${(doc.content||[]).length}段</span></div><div class="full-prose">${blocks}</div></section>`;return`<article class="reader"><div class="reader-head"><button class="icon-button mobile-back" data-action="close-reader">‹</button><div class="reader-title"><strong>${esc(doc.title||'公共文档')}</strong><span>${esc(currentProject()?.name||'')}</span></div></div><div class="reader-body"><div class="reader-inner">${blocks}</div></div>${state.search.results.length?`<div class="reader-footer"><button data-action="prev-search">上一处</button><span class="meta">${state.search.selectedIndex+1}/${state.search.results.length}</span><button data-action="next-search">下一处</button></div>`:''}</article>`}
-function renderFullText(){const p=currentProject();if(!p)return`<div class="empty"><div>暂无原文</div></div>`;if(state.navigation.kind==='common')return`<div class="full-text"><div class="full-text-inner">${renderCommonDocument(true)}</div></div>`;const common=state.navigation.kind==='project'&&p.commonDoc?renderCommonDocument(true):'';const episodes=activeEpisodes().map(ep=>{const scenes=(ep.scenes||[]).map(scene=>{const head=`第${esc(ep.episodeNoDisplay)}集第${esc(scene.sceneNoDisplay)}场 · ${esc(sceneLocation(scene.sceneLabel))} · ${esc(scene.timeTag||'—')} · ${esc(scene.inout||'—')}`;return`<section class="full-scene" data-scene-key="${esc(scene.key)}"><div class="full-scene-head" title="${head}">${head}</div><div class="full-prose">${(scene.paragraphs||[]).map(para=>renderScriptParagraph(para)).join('')}</div></section>`}).join('');return`<section class="full-episode"><div class="full-episode-title">第${esc(ep.episodeNoDisplay)}集<span>${esc(ep.versionName||'')} · ${(ep.scenes||[]).length}场</span></div>${scenes||`<div class="empty"><div>本集暂无原文</div></div>`}</section>`}).join('');return`<div class="full-text"><div class="full-text-inner">${common}${episodes||`<div class="empty"><div>当前范围暂无原文</div></div>`}</div></div>`}
+function renderFullText(){const p=currentProject();if(!p)return`<div class="empty"><div>暂无原文</div></div>`;if(state.navigation.kind==='common')return`<div class="full-text"><div class="full-text-inner">${renderCommonDocument(true)}</div></div>`;const common=state.navigation.kind==='project'&&p.commonDoc?renderCommonDocument(true):'';const episodes=activeEpisodes().map(ep=>{const scenes=(ep.scenes||[]).map(scene=>{const head=`第${esc(ep.episodeNoDisplay)}集 · 第${esc(scene.sceneNoDisplay)}场 · ${esc(sceneLocation(scene.sceneLabel))} · ${esc(scene.timeTag||'—')} · ${esc(scene.inout||'—')}`;return`<section class="full-scene" data-scene-key="${esc(scene.key)}"><div class="full-scene-head" title="${head}">${head}</div><div class="full-prose">${(scene.paragraphs||[]).map(para=>renderScriptParagraph(para)).join('')}</div></section>`}).join('');return`<section class="full-episode"><div class="full-episode-title">第${esc(ep.episodeNoDisplay)}集<span>${esc(ep.versionName||'')} · ${(ep.scenes||[]).length}场</span></div>${scenes||`<div class="empty"><div>本集暂无原文</div></div>`}</section>`}).join('');return`<div class="full-text"><div class="full-text-inner">${common}${episodes||`<div class="empty"><div>当前范围暂无原文</div></div>`}</div></div>`}
 function renderSearchWorkspace(){const q=norm(state.search.query);if(!q)return renderFullText();state.search.results=buildSearchResults();const reader=state.search.reader;const rows=state.search.results.map((r,i)=>`<button class="result-row ${state.search.selectedIndex===i?'active':''}" data-search-index="${i}"><span class="result-pos">${esc(r.positionLabel||`${r.episodeNo}-${r.sceneNo}`)}</span><span class="one-line">${r.snippet}</span></button>`).join('');return`<div class="split ${reader?'search-reader-active':''}"><div class="pane search-list-pane"><div class="section-title"><span>搜索结果</span><span>${state.search.results.length}处</span></div><div id="searchResults" class="content-scroll">${rows||`<div class="empty"><div>没有匹配内容</div></div>`}</div></div><div class="pane search-reader-pane">${reader?renderReader(reader,'search'):`<div class="empty"><div>点选结果查看原文</div></div>`}</div></div>`}
 function renderSearch(){state.search.results=buildSearchResults();return`<section class="page"><div class="toolbar"><input id="searchInput" type="search" value="${esc(state.search.query)}" placeholder="在当前原文中搜索…" autocomplete="off" enterkeyhint="search"><span class="scope-label">${esc(selectedRangeLabel())}</span><span id="searchCount" class="meta">${state.search.query?`${state.search.results.length}处`:'原文'}</span></div><div id="searchWorkspace" class="search-workspace">${renderSearchWorkspace()}</div></section>`}
 function readerPayload(loc,extra={}){const found=findScene(loc.episodeId,loc.sceneKey,loc.versionId);return found?{...loc,...found,...extra}:null}

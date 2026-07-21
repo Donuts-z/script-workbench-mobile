@@ -1,4 +1,4 @@
-const CACHE_NAME='script-workbench-mobile-v1.4.0';
+const CACHE_NAME='script-workbench-mobile-v1.5.0';
 const APP_SHELL=['./','./index.html','./manifest.webmanifest','./icons/apple-touch-icon.png','./icons/icon-192.png','./icons/icon-512.png'];
 
 self.addEventListener('install',event=>{
