@@ -1,5 +1,5 @@
-const CACHE_NAME='script-workbench-mobile-v1.6.0';
-const APP_SHELL=['./','./index.html','./manifest.webmanifest','./icons/apple-touch-icon.png','./icons/icon-192.png','./icons/icon-512.png'];
+const CACHE_NAME='script-workbench-mobile-v1.6.1-logo';
+const APP_SHELL=['./','./index.html','./manifest.webmanifest','./icons/apple-touch-icon.png','./icons/icon-192.png','./icons/icon-512.png','./icons/favicon-32.png','./icons/favicon-48.png','./icons/favicon.ico'];
 
 self.addEventListener('install',event=>{
   event.waitUntil(
